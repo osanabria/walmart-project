@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+    
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+
+    <title>Walmart Project</title>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1 class="heading">Walmart GitHub API Project</h1>
+            <h2 class="heading">by Osmin Sanabria</h2>
+        </header>
+        <section>
+            <form action="/all" method="get">
+                <button class="btn btn-info">all</button>
+            </form>
+            <form action="/open" method="get">
+                <button class="btn btn-info ">open</button>
+            </form>
+            <form action="/closed" method="get">
+                <button class="btn btn-info ">closed</button>
+            </form>
+        </section>
+        
+        <table id="table" data-toggle="table" data-search="true" data-height="680" data-pagination="true" data-page-size="10"
+            data-pagination-v-align="both" data-pagination-pre-text="Previous" data-pagination-next-text="Next">
+            <thead>
+                <tr>
+                    <th data-field="Store #">Title</th>
+                    <th data-field="INC #">Issue #</th>
+                    <th data-field="Issue">State</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% result.forEach(function(result){ %>
+                    <tr>
+                        <th scope="row">
+                            <form action="/issue" method="POST">
+                                <input type="text" value="<%=result[1].url%>" name="url" hidden>
+                                <input class="title" type="submit" value="<%= result[1].title %>">
+                            </form>
+                        </th>
+                        <td>
+                            <%= result[1].number%>
+                        </td>
+                        <td>
+                            <%= result[1].state%>
+                        </td>
+                    </tr>
+                <% }) %>
+        </table>
+    </div>
+    
+</body>
+</html>
+
+
+
+
+

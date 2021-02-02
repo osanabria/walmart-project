@@ -1,0 +1,31 @@
+.closed
+{
+    color: red;
+}
+.open
+{
+    color: green;
+}
+header
+{
+    margin-top: 2em;
+    text-align: center;
+}
+section
+{
+    margin-top: 1.2em;
+    margin-bottom: -1em;
+    width: 75%;
+}
+
+section form
+{
+    margin-top: 3em;
+    width: 10%;
+    float: left;
+}
+.title
+{
+    border:none;
+    cursor: pointer;
+}

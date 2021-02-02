@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+        integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="/main.css">
+
+
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+    <script src="https://unpkg.com/bootstrap-table@1.18.2/dist/bootstrap-table.min.js"></script>
+
+    <title>Walmart Project</title>
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <h1>
+                <%= issue.title%>
+            </h1>
+            <h2 class="text-muted">
+                Issue # <%= issue.number%>
+            </h2>
+        </header>
+        <p> <strong>Initial Comment:</strong>
+            <%= issue.body%>
+            <strong>User:</strong>
+            <%= issue.user.login%> | <strong>Created</strong>: <%= issue.created_at%>
+        </p>
+        <%if(typeof comment != "undefined") { %>
+        <% comment.forEach(function(comment){ %>
+        <p> <strong>Comment:</strong>
+            <%= comment[1].body%>
+                <strong>User:</strong>
+                <%= comment[1].user.login%> | <strong>Created</strong>: <%= comment[1].created_at%>
+        </p>
+        <% }) %>
+        <% } %>
+        <p>
+            <% if(issue.state == "closed"){ %> 
+                <span class="closed"><strong><%= issue.state%></strong></span>
+           <% } else { %> 
+                <span class="open">
+                    <strong><%= issue.state%></strong>
+                </span>
+            <%}%>
+        </p> 
+        <form action="/all" method="get">
+            <button class="btn btn-info btn-block">Back</button>
+        </form>
+    </div>
+    
+
+</body>
+
+</html>
